@@ -1,6 +1,5 @@
-alert('Hello world');
-
-
-// The let keyword is how you define a variable in JavaScript. Following that keyword is the name you want to give the variable
-let favoriteFood="Apple, Banana & Avocado"
-document.write(favoriteFood)
+let pokemonList = [
+  { name: 'Balbasaur', height: '0.7', type: ['grass', 'poison']},
+  { name: 'Graveler', height: '1', type: ['rock', 'ground']},
+  { name: 'Slowbro', height: '1.6', type: ['psychic', 'water' ]}
+]
