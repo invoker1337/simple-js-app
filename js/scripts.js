@@ -4,6 +4,13 @@ let pokemonList = [
   { name: 'Slowbro', height: ' 1.6 ', types: ['psychic', 'water' ]}
 ];
 
+
 for (let i = 0; i < pokemonList.length; i++) {
-  document.write("Name: " + pokemonList[i].name + " / height:" + pokemonList[i].height + " / Types: " + pokemonList[i].types);
+  if (pokemonList[i].height >= 1.1){
+
+    document.write("<br>" + "Name: " + pokemonList[i].name + "// height:" + pokemonList[i].height + "<b>WOW thats a big one!</b>" + "// Type: " + pokemonList[i].types);
+  } else {
+    document.write("<br>" + "Name: " + pokemonList[i].name + "// height:" + pokemonList[i].height + "// Type: " + pokemonList[i].types);
+  }
+
 }
