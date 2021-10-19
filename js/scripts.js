@@ -5,7 +5,7 @@ let pokemonList = [
 ];
 
 
-for (let i = 0; i < pokemonList.length; i++) {
+for (let i = 0; i < pokemonList.length; i++) { //instead of writing down every pokemon by myself, i am using a "for loop" to write it multiple times
   if (pokemonList[i].height >= 1.1){
 
     document.write("<br>" + "Name: " + pokemonList[i].name + "// height:" + pokemonList[i].height + "<b>WOW thats a big one!</b>" + "// Type: " + pokemonList[i].types);
