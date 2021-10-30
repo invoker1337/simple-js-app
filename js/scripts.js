@@ -24,24 +24,68 @@ let pokemonRepository = (function () {
     { name: 'Slowbro', height: ' 1.6 ', types: ['psychic', 'water' ]}
   ];
 
-  function add(pokemon) { // This code line implies: a function should add the Pokemon referred to with item to the pokemonList array //
-    pokemonList.push(pokemon);
+  function getAll () {
+      return pokemonList;
   }
 
-  function getAll() {
-    return pokemonList;  // This code line implies: a function should return the pokemonList array
+  function add(pokemon) {
+      pokemonList.push(pokemon);
+  }
+
+  function addListItem (pokemon) {
+      let pokemonList = document.querySelector('.pokemon-list');
+      let listPokemon = document.createElement('li');
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('button-class')
+      listPokemon.appendChild(button);
+      pokemonList.appendChild(listPokemon);
+      button.addEventListener('click', function() {
+          showDetails(pokemon)
+      });
+  }
+
+  function showDetails(pokemon) {
+      console.log (pokemon);
   }
 
   return {
-    add: add,
-    getAll: getAll
+      getAll: getAll,
+      add: add,
+      addListItem: addListItem
   };
-}) ();   // This code line implies: the end of the wrap of pokemonList array in an IIFE
+
+  } )();
+
+  pokemonRepository.getAll().forEach(function (pokemon) {
+      pokemonRepository.addListItem(pokemon);
+  });
 
 
-pokemonList = pokemonRepository.getAll(); // This code line implies: should return the pokemonList array
 
-// 'function' keyword allows us to define our functions in javascript.If 'variables' are nouns, functions are verbs. They do things,they take action.
+
+
+
+
+/* DOM manipulation basics:
+
+let mainTitle = document.querySelector('h1');
+mainTitle.innerText= "Pokedex";
+
+let container = document.querySelector('.container');   //when selecting a 'class' make sure to add the dot .
+
+
+let button = document.createElement('button');
+button.innerText='click this thang';
+container.appendChild(button);
+*/
+
+
+
+
+
+/* this is the forEachfunction
+
 pokemonList.forEach(function(pokemon){                     //forEach loop iterates over each item in the pokemonList so that i do not have to write them all down individually.
   if (pokemon.height >= 1.1){                              // if condition checks if the height is above a certain value to perform a specific action, in this case 'document.write...'
 
@@ -53,3 +97,5 @@ pokemonList.forEach(function(pokemon){                     //forEach loop iterat
   }
 
 });
+
+end of for forEachfunction */
