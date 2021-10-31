@@ -15,14 +15,9 @@ Complex Data Types:
 
 
 // IIFE: The first code line implies: new pokemonRepository variable to hold what IIFE will return, and assign the IIFE to that variable. Start of wrap of pokemonList array in an IIFE this function is closed with })();   //
-
 let pokemonRepository = (function () {
-
-  let pokemonList = [     //declaring variables to store values, in this case the variable 'name' is 'pokemonList'. A variable is like a labeled box, and the value is like the thing thats being stored inside the box. Values can be changed at any point in time. Other ways to declare variables are 'const' and 'var'
-    { name: 'Balbasaur', height: ' 0.7 ', types: ['grass', 'poison']},  //the 'name';'height';'types' are 'Keys' whereas 'Balbasur'; '0,7' ; and 'grass,poison' are the values associated with them. "height:0.7" is a key-value pair, also called property.
-    { name: 'Graveler', height: ' 1.0 ', types: ['rock', 'ground']},  // [rock, ground] are arrays. An array is like an object where each value has a number as a key, designating its place in the list. Those numbers are reffered to as 'array index' and they start from 0. 'rock' has an array index of 0 and ground 1.
-    { name: 'Slowbro', height: ' 1.6 ', types: ['psychic', 'water' ]}
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function getAll () {
       return pokemonList;
@@ -45,22 +40,74 @@ let pokemonRepository = (function () {
       });
   }
 
-  function showDetails(pokemon) {
-      console.log (pokemon);
+
+
+
+
+  function loadList() {
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+          console.log(pokemon);
+        });
+      }).catch(function (e) {
+        console.error(e);
+      })
+    }
+
+
+
+
+
+ function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
   }
+
+
+
+
+  function showDetails(pokemon) {
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
+  }
+
+
+
+
 
   return {
       getAll: getAll,
       add: add,
-      addListItem: addListItem
+      addListItem: addListItem,
+      loadList: loadList,
+      loadDetails: loadDetails,
+      showDetails:showDetails
   };
 
   } )();
 
+pokemonRepository.loadList().then(function(){
   pokemonRepository.getAll().forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
   });
-
+});
 
 
 
