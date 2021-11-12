@@ -7,9 +7,14 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
-<h1> Pokedex </h1>
-<ul class="pokemon-list"></ul>
-
+    <h1 class=pokedexhead>Pokedex</h1>
+        <div id='modal-container'>
+          <div class='modal'>
+            <div id='img-container'></div>
+            <button class='modal-close'>Close</button>
+          </div>
+        </div>
+         <ul class ='pokemon-list'></ul>
 
 <!-- this script order is important  1.promise 2. fetch 3. main script -->
 <script src="js/promise-polyfill.js"> </script>
