@@ -27,9 +27,6 @@ let pokemonRepository = (function () {
 		    imgElement.src= pokemon.imageUrl
 
 
-				let imageElement = $('<img class="modal-img" style="width:50%">')
-				imageElement.attr("src",pokemon.imageUrl);
-
 
 
 
