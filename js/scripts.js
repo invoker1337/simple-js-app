@@ -10,14 +10,25 @@ let pokemonRepository = (function () {
 		return pokemonList;
 	}
 
+
+
+
+
+
 	function addListItem(pokemon) {
 		let pokeList = document.querySelector('.pokemon-list');
 		let listItem = document.createElement('li');
 		let button = document.createElement('button');
 		button.innerText = pokemon.name;
+
+
+
 		button.classList.add('btn');
 		button.setAttribute("data-target", "#exampleModal");
 		button.setAttribute("data-toggle", "modal");
+
+
+
 		//Event listener to make showDetails function when Pokemon button is clicked
 		button.addEventListener('click', function(event) {
 			showDetails(pokemon);
@@ -71,6 +82,7 @@ function showModal(pokemon) { //Modal function
 	let modalBody = $(".modal-body");
 	let modalTitle = $(".modal-title");
 	let modalHeader = $(".modal-header");
+
 	//clear modal of existing content
 	modalTitle.empty();
 	modalBody.empty();
@@ -100,6 +112,26 @@ function showModal(pokemon) { //Modal function
   modalBody.append(weightElement);
   modalBody.append(typeElement);
 	}
+
+
+	// search pokemon name in nav bar
+  let searchPokemon = document.querySelector('#searchbar');
+  searchPokemon.addEventListener('input', () =>{
+      let value = searchPokemon.value.toLowerCase();
+      let pokemonList = document.querySelectorAll('li');
+      pokemonList.forEach((pokemon) =>{
+          if(pokemon.innerText.toLowerCase().includes(value))
+              pokemon.style.display = 'block';
+          else
+              pokemon.style.display = 'none';
+      })
+  });
+
+  function getAll() {
+      return pokemonList;
+  }
+
+
 
 	return {
 		add: add,
