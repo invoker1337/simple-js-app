@@ -23,6 +23,23 @@ let pokemonRepository = (function () {
 
 
 
+		    let imgElement = document.createElement('img');
+		    imgElement.src= pokemon.imageUrl
+
+
+				let imageElement = $('<img class="modal-img" style="width:50%">')
+				imageElement.attr("src",pokemon.imageUrl);
+
+
+
+
+
+	button.appendChild(imgElement);
+
+
+
+
+
 		button.classList.add('btn');
 		button.setAttribute("data-target", "#exampleModal");
 		button.setAttribute("data-toggle", "modal");
