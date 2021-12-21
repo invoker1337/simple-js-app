@@ -128,7 +128,15 @@ function showModal(pokemon) { //Modal function
 	}
 
 
-	// search pokemon name in nav bar
+
+
+
+
+
+
+
+
+	// // search pokemon name in nav bar
   let searchPokemon = document.querySelector('#searchbar');
   searchPokemon.addEventListener('input', () =>{
       let value = searchPokemon.value.toLowerCase();
@@ -140,6 +148,13 @@ function showModal(pokemon) { //Modal function
               pokemon.style.display = 'none';
       })
   });
+
+
+
+
+
+
+
 
   function getAll() {
       return pokemonList;
