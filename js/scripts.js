@@ -154,9 +154,6 @@ function showModal(pokemon) { //Modal function
 
 
 
-		button.classList.add('btn');
-		button.setAttribute("data-target", "#exampleModal");
-		button.setAttribute("data-toggle", "modal");
 
 
 
